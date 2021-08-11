@@ -21,37 +21,34 @@ import './style.css';
  * and value "good" or "bad"
  */
 const firebaseConfig = {
-  apiKey: "AIzaSyBYUTBGRH50qmsADJ5RNo8Jt6LFOyo5hZs",
-    authDomain: "iimgbb.firebaseapp.com",
-    databaseURL: "https://iimgbb-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "iimgbb",
-    storageBucket: "iimgbb.appspot.com",
-    messagingSenderId: "210074656962",
-    appId: "1:210074656962:web:0a4f2f2b28fa4d28759b5b",
-    measurementId: "G-3NFG6Q5LYF"
+  apiKey: "AIzaSyCqwWYWYn7Yf1_lx7SBq3Ns4ZFF9SbTk6Q",
+    authDomain: "ll1lll.firebaseapp.com",
+    databaseURL: "https://ll1lll-default-rtdb.firebaseio.com",
+    projectId: "ll1lll",
+    storageBucket: "ll1lll.appspot.com",
+    messagingSenderId: "773633719961",
+    appId: "1:773633719961:web:1e9008b89e3572035c4208",
+    measurementId: "G-7VC6BJ071Y"
 };
 
 function Burrito() {
   // easily access the Firestore library
   const burritoRef = useFirestore()
-    .collection('L')
-    .doc('LL');
+    .collection('$')
+    .doc('$');
 
   // subscribe to a document for realtime updates. just one line!
-  const { status, data } = useFirestoreDocData(burritoRef);
+  var v = JSON.stringify(useFirestoreDocData(burritoRef),null,4)
 
-  // easily check the loading status
-  if (status === 'loading') {
-    return <p>Fetching burrito flavor...</p>;
-  }
 
-  return <p>The burrito is {data.yummy ? 'good' : 'bad'}!</p>;
+
+  return <pre>{v}</pre>
 }
 
 function App() {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <h1>🌯</h1>
+     
       <Burrito />
     </FirebaseAppProvider>
   );
